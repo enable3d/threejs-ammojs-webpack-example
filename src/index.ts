@@ -1,6 +1,13 @@
-import * as THREE from 'three'
+import * as THREE from '@enable3d/three-wrapper/dist'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { AmmoPhysics, PhysicsLoader } from '@enable3d/ammo-physics'
+import {
+  AmmoPhysics,
+  ExtendedMesh,
+  ExtendedObject3D,
+  PhysicsLoader
+} from '@enable3d/ammo-physics'
+
+console.log('Three.js version r' + THREE.REVISION)
 
 const MainScene = () => {
   // scene
@@ -30,7 +37,6 @@ const MainScene = () => {
   renderer.setPixelRatio(Math.min(2, DPR))
 
   // orbit controls
-  // @ts-ignore
   new OrbitControls(camera, renderer.domElement)
 
   // light
@@ -59,8 +65,7 @@ const MainScene = () => {
   // first parameter is the config for the geometry
   // second parameter is for the material
   // you could also add a custom material like so { custom: new THREE.MeshLambertMaterial({ color: 0x00ff00 }) }
-  // @ts-ignore
-  let greenSphere = factory.addSphere(
+  const greenSphere = factory.add.sphere(
     { y: 2, z: 5 },
     { lambert: { color: 0x00ff00 } }
   )
@@ -70,11 +75,10 @@ const MainScene = () => {
   // green sphere
   const geometry = new THREE.BoxBufferGeometry()
   const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 })
-  const cube = new THREE.Mesh(geometry, material)
+  const cube = new ExtendedMesh(geometry, material)
   cube.position.set(0, 5, 0)
   scene.add(cube)
   physics.add.existing(cube as any)
-  // @ts-expect-error
   cube.body.setCollisionFlags(2) // make it kinematic
 
   // merge children to compound shape
@@ -110,7 +114,6 @@ const MainScene = () => {
   const animate = () => {
     cube.rotation.x += 0.01
     cube.rotation.y += 0.01
-    // @ts-expect-error
     cube.body.needUpdate = true // this is how you update kinematic bodies
 
     physics.update(clock.getDelta() * 1000)
