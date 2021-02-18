@@ -1,4 +1,4 @@
-import * as THREE from '@enable3d/three-wrapper/dist'
+import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import {
   AmmoPhysics,

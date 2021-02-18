@@ -1,9 +1,5 @@
-Just an example. Not for development or production use.
+# Three.js & ammo.js
 
-Run `npm i` and `npm start`
+Just a simple example of Three.js with ammo.js
 
-You don't need to install three.js. Just import it using:  
-`import * as THREE from '@enable3d/three-wrapper/dist'`
-
-You can use code from the three.js examples folder:  
-`import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'`
+Run `npm install` and `npm start`
