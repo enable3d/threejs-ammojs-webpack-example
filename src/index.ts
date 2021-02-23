@@ -8,6 +8,9 @@ import { AmmoPhysics, ExtendedMesh, PhysicsLoader } from '@enable3d/ammo-physics
 // CSG
 import { CSG } from '@enable3d/three-graphics/jsm/csg'
 
+// Flat
+import { TextTexture, TextSprite } from '@enable3d/three-graphics/jsm/flat'
+
 console.log('Three.js version r' + THREE.REVISION)
 
 const MainScene = () => {
@@ -27,9 +30,15 @@ const MainScene = () => {
   // you can access Ammo directly if you want
   // new Ammo.btVector3(1, 2, 3).y()
 
+  // 2d camera/2d scene
+  const scene2d = new THREE.Scene()
+  const camera2d = new THREE.OrthographicCamera(0, width, height, 0, 1, 1000)
+  camera2d.position.setZ(10)
+
   // renderer
   const renderer = new THREE.WebGLRenderer()
-  renderer.setSize(window.innerWidth, window.innerHeight)
+  renderer.setSize(width, height)
+  renderer.autoClear = false
   document.body.appendChild(renderer.domElement)
 
   // csg
@@ -48,6 +57,12 @@ const MainScene = () => {
   meshC_1.position.setX(5)
   meshC_2.position.setX(7)
   scene.add(meshC_0, meshC_1, meshC_2)
+
+  // add 2d text
+  const text = new TextTexture('some 2d text', { fontWeight: 'bold' })
+  const sprite = new TextSprite(text)
+  sprite.setPosition(0 + text.width / 2, height - text.height / 2)
+  scene2d.add(sprite)
 
   // dpr
   const DPR = window.devicePixelRatio
@@ -126,7 +141,11 @@ const MainScene = () => {
 
     physics.update(clock.getDelta() * 1000)
     physics.updateDebugger()
+
+    renderer.clear()
     renderer.render(scene, camera)
+    renderer.clearDepth()
+    renderer.render(scene2d, camera2d)
 
     requestAnimationFrame(animate)
   }
