@@ -1,11 +1,13 @@
+// three.js
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import {
-  AmmoPhysics,
-  ExtendedMesh,
-  ExtendedObject3D,
-  PhysicsLoader
-} from '@enable3d/ammo-physics'
+
+// physics
+import { AmmoPhysics, ExtendedMesh, PhysicsLoader } from '@enable3d/ammo-physics'
+
+// CSG
+import CSGWrapper from '@enable3d/three-graphics/dist/plugins/csg/csg'
+import Transform from '@enable3d/three-graphics/dist/plugins/transform'
 
 console.log('Three.js version r' + THREE.REVISION)
 
@@ -15,12 +17,7 @@ const MainScene = () => {
   scene.background = new THREE.Color(0xf0f0f0)
 
   // camera
-  const camera = new THREE.PerspectiveCamera(
-    50,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-  )
+  const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000)
   camera.position.set(10, 10, 20)
   camera.lookAt(0, 0, 0)
 
@@ -31,6 +28,24 @@ const MainScene = () => {
   const renderer = new THREE.WebGLRenderer()
   renderer.setSize(window.innerWidth, window.innerHeight)
   document.body.appendChild(renderer.domElement)
+
+  // csg
+  const csg = new CSGWrapper(scene, new Transform(camera, renderer))
+  const mat = new THREE.MeshNormalMaterial()
+  const meshA = new THREE.Mesh(new THREE.BoxBufferGeometry(1, 1, 1))
+  const meshB = new THREE.Mesh(new THREE.SphereBufferGeometry(0.5, 16, 16))
+  meshA.position.set(3, 3, 0)
+  meshB.position.set(3.25, 3.1, 0.4)
+  const meshC_0 = csg.intersect(meshA, meshB)
+  const meshC_1 = csg.subtract(meshA, meshB)
+  const meshC_2 = csg.union(meshA, meshB)
+  meshC_0.material = mat
+  meshC_1.material = mat
+  meshC_2.material = mat
+  meshC_0.position.setX(3)
+  meshC_1.position.setX(5)
+  meshC_2.position.setX(7)
+  scene.add(meshC_0, meshC_1, meshC_2)
 
   // dpr
   const DPR = window.devicePixelRatio
@@ -65,14 +80,11 @@ const MainScene = () => {
   // first parameter is the config for the geometry
   // second parameter is for the material
   // you could also add a custom material like so { custom: new THREE.MeshLambertMaterial({ color: 0x00ff00 }) }
-  const greenSphere = factory.add.sphere(
-    { y: 2, z: 5 },
-    { lambert: { color: 0x00ff00 } }
-  )
+  const greenSphere = factory.add.sphere({ y: 2, z: 5 }, { lambert: { color: 0x00ff00 } })
   // once the object is created, you can add physics to it
   physics.add.existing(greenSphere)
 
-  // green sphere
+  // green box
   const geometry = new THREE.BoxBufferGeometry()
   const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 })
   const cube = new ExtendedMesh(geometry, material)
@@ -85,16 +97,10 @@ const MainScene = () => {
   const exclamationMark = () => {
     const material = new THREE.MeshLambertMaterial({ color: 0xffff00 })
 
-    const sphere = new THREE.Mesh(
-      new THREE.SphereBufferGeometry(0.25),
-      material
-    )
+    const sphere = new THREE.Mesh(new THREE.SphereBufferGeometry(0.25), material)
     sphere.position.set(0, -0.8, 0)
 
-    const cube = new THREE.Mesh(
-      new THREE.BoxBufferGeometry(0.4, 0.8, 0.4),
-      material
-    )
+    const cube = new THREE.Mesh(new THREE.BoxBufferGeometry(0.4, 0.8, 0.4), material)
     cube.position.set(5, 2, 5)
 
     cube.add(sphere)
