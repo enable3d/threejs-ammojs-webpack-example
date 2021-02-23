@@ -13,8 +13,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@enable3d/ammo-physics": "0.22.0-dev.0",
-    "@enable3d/three-graphics": "0.22.0-dev.0",
+    "@enable3d/ammo-physics": "0.22.0-dev.1",
+    "@enable3d/three-graphics": "0.22.0-dev.1",
     "three": "0.125.2"
   },
   "devDependencies": {

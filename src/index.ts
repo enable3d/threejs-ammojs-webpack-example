@@ -6,18 +6,21 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { AmmoPhysics, ExtendedMesh, PhysicsLoader } from '@enable3d/ammo-physics'
 
 // CSG
-import CSGWrapper from '@enable3d/three-graphics/dist/plugins/csg/csg'
-import Transform from '@enable3d/three-graphics/dist/plugins/transform'
+import { CSG } from '@enable3d/three-graphics/jsm/csg'
 
 console.log('Three.js version r' + THREE.REVISION)
 
 const MainScene = () => {
+  // sizes
+  const width = window.innerWidth
+  const height = window.innerHeight
+
   // scene
   const scene = new THREE.Scene()
   scene.background = new THREE.Color(0xf0f0f0)
 
   // camera
-  const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000)
+  const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000)
   camera.position.set(10, 10, 20)
   camera.lookAt(0, 0, 0)
 
@@ -30,15 +33,14 @@ const MainScene = () => {
   document.body.appendChild(renderer.domElement)
 
   // csg
-  const csg = new CSGWrapper(scene, new Transform(camera, renderer))
   const mat = new THREE.MeshNormalMaterial()
   const meshA = new THREE.Mesh(new THREE.BoxBufferGeometry(1, 1, 1))
   const meshB = new THREE.Mesh(new THREE.SphereBufferGeometry(0.5, 16, 16))
   meshA.position.set(3, 3, 0)
   meshB.position.set(3.25, 3.1, 0.4)
-  const meshC_0 = csg.intersect(meshA, meshB)
-  const meshC_1 = csg.subtract(meshA, meshB)
-  const meshC_2 = csg.union(meshA, meshB)
+  const meshC_0 = CSG.intersect(meshA, meshB)
+  const meshC_1 = CSG.subtract(meshA, meshB)
+  const meshC_2 = CSG.union(meshA, meshB)
   meshC_0.material = mat
   meshC_1.material = mat
   meshC_2.material = mat
