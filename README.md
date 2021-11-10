@@ -11,9 +11,21 @@
 - The `standalone.ts` file contains a **Standalone Enable3d** project.  
   _Comment/UnComment whatever scene you want to run in `index.ts`._
 
-## Run
+## Install & Run
 
-Run `npm install` and `npm start`
+```console
+# download this repo
+npx gitget enable3d/threejs-ammojs-webpack-example enable3d-webpack
+
+# navigate into the directory
+cd enable3d-webpack
+
+# install
+npm install
+
+# start
+npm start
+```
 
 ## Dependencies
 
