@@ -11,7 +11,7 @@
 - The `standalone.ts` file contains a **Standalone Enable3d** project.  
   _Copy/Past `standalone.ts` into `index.ts` to use it._
 
----
+## Run
 
 Run `npm install` and `npm start`
 
