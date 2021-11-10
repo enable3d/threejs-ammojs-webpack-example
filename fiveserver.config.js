@@ -1,6 +1,6 @@
 module.exports = {
   // root folder is /src
-  root: 'src',
+  root: 'www',
   // reloads only on .html and .js file changes
-  watch: ['src/*.html', 'src/*.js']
+  watch: ['www/*.html', 'www/**/*.js']
 }

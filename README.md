@@ -7,9 +7,9 @@
 
 ## Standalone Enable3d framework
 
-- The `index.ts` file contains a three.js project with Enable3d's **Physics Extension**.
+- The `three.ts` file contains a three.js project with Enable3d's **Physics Extension**.
 - The `standalone.ts` file contains a **Standalone Enable3d** project.  
-  _Copy/Past `standalone.ts` into `index.ts` to use it._
+  _Comment/UnComment whatever scene you want to run in `index.ts`._
 
 ## Run
 

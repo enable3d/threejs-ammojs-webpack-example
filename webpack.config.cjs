@@ -3,7 +3,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.ts',
+  entry: './www/scripts/index.ts',
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -18,8 +18,8 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js']
   },
   output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, 'src')
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'www')
   },
   optimization: {
     minimizer: [
