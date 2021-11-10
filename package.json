@@ -6,8 +6,8 @@
   "scripts": {
     "start": "npm run bundle && npm-run-all --parallel webpack serve",
     "serve": "five-server",
-    "bundle": "webpack --config webpack.config.js",
-    "webpack": "webpack --config webpack.config.js --watch"
+    "bundle": "webpack --config webpack.config.cjs",
+    "webpack": "webpack --config webpack.config.cjs --watch"
   },
   "keywords": [],
   "author": "",
