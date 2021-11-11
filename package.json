@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run bundle && npm-run-all --parallel webpack serve",
+    "build": "npm run bundle",
     "serve": "five-server",
     "bundle": "webpack --config webpack.config.cjs",
     "webpack": "webpack --config webpack.config.cjs --watch"
