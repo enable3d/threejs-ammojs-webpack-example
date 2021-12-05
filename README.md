@@ -1,5 +1,9 @@
 # Three.js & ammo.js (enable3d)
 
+<img width="640" alt="screenshot" src="./readme/screenshot.png">
+
+---
+
 ## Example of Three.js with ammo.js
 
 - Contains a **CSG Example with BufferGeometries**.
