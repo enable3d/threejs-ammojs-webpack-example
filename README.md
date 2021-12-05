@@ -5,11 +5,12 @@
 - Contains a **CSG Example with BufferGeometries**.
 - Contains the **Flat Package for 2D Elements**.
 
-## Standalone Enable3d framework
+## Projects
 
-- The `three.ts` file contains a three.js project with Enable3d's **Physics Extension**.
-- The `standalone.ts` file contains a **Standalone Enable3d** project.  
-  _Comment/UnComment whatever scene you want to run in `index.ts`._
+The `index.ts` file contains to different project:
+
+- `three.ts` file contains a three.js project with Enable3d's **Physics Extension**.
+- `standalone.ts` file contains a **Standalone Enable3d** project.
 
 ## Install & Run
 
