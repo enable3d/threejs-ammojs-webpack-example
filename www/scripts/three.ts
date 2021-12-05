@@ -59,9 +59,11 @@ const MainScene = () => {
   scene.add(meshC_0, meshC_1, meshC_2)
 
   // add 2d text
-  const text = new TextTexture('some 2d text', { fontWeight: 'bold', fontSize: 24 })
+  const text = new TextTexture('some 2d text', { fontWeight: 'bold', fontSize: 48 })
   const sprite = new TextSprite(text)
-  sprite.setPosition(0 + text.width / 2 + 12, height - text.height / 2 - 12)
+  const scale = 0.5
+  sprite.setScale(scale)
+  sprite.setPosition(0 + (text.width * scale) / 2 + 12, height - (text.height * scale) / 2 - 12)
   scene2d.add(sprite)
 
   // dpr
