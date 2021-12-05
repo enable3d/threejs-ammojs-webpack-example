@@ -59,9 +59,9 @@ const MainScene = () => {
   scene.add(meshC_0, meshC_1, meshC_2)
 
   // add 2d text
-  const text = new TextTexture('some 2d text', { fontWeight: 'bold' })
+  const text = new TextTexture('some 2d text', { fontWeight: 'bold', fontSize: 24 })
   const sprite = new TextSprite(text)
-  sprite.setPosition(0 + text.width / 2, height - text.height / 2)
+  sprite.setPosition(0 + text.width / 2 + 12, height - text.height / 2 - 12)
   scene2d.add(sprite)
 
   // dpr
@@ -142,6 +142,8 @@ const MainScene = () => {
     physics.update(clock.getDelta() * 1000)
     physics.updateDebugger()
 
+    // you have to clear and call render twice because there are 2 scenes
+    // one 3d scene and one 2d scene
     renderer.clear()
     renderer.render(scene, camera)
     renderer.clearDepth()
