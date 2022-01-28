@@ -14,7 +14,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "enable3d": "~0.24.1"
+    "enable3d": "~0.25.0"
   },
   "devDependencies": {
     "five-server": "^0.1.2",
