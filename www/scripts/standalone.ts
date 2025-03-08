@@ -1,7 +1,7 @@
-import { Project, Scene3D, PhysicsLoader, THREE, ExtendedObject3D } from 'enable3d'
+import { Project, Scene3D, PhysicsLoader, THREE, ExtendedMesh } from 'enable3d'
 
 class MainScene extends Scene3D {
-  box!: ExtendedObject3D
+  box!: ExtendedMesh
 
   constructor() {
     super({ key: 'MainScene' })

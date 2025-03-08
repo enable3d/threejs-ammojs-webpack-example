@@ -6,12 +6,14 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { AmmoPhysics, ExtendedMesh, PhysicsLoader } from '@enable3d/ammo-physics'
 
 // CSG
-import { CSG } from '@enable3d/three-graphics/jsm/csg'
+import { CSG } from '@enable3d/three-graphics/dist/csg'
 
 // Flat
-import { TextTexture, TextSprite } from '@enable3d/three-graphics/jsm/flat'
+import { TextTexture, TextSprite } from '@enable3d/three-graphics/dist/flat'
+import { VERSION } from 'enable3d'
 
 console.log('Three.js version r' + THREE.REVISION)
+console.log('Enable3d version ' + VERSION)
 
 const MainScene = () => {
   // sizes
