@@ -1,5 +1,4 @@
 /debug.log
 /node_modules
-/package-lock.json
 /www/bundle.js
 index.js

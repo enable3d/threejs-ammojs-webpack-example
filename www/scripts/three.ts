@@ -43,8 +43,8 @@ const MainScene = () => {
 
   // csg
   const mat = new THREE.MeshNormalMaterial()
-  const meshA = new THREE.Mesh(new THREE.BoxBufferGeometry(1, 1, 1))
-  const meshB = new THREE.Mesh(new THREE.SphereBufferGeometry(0.5, 16, 16))
+  const meshA = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1))
+  const meshB = new THREE.Mesh(new THREE.SphereGeometry(0.5, 16, 16))
   meshA.position.set(3, 3, 0)
   meshB.position.set(3.25, 3.1, 0.4)
   const meshC_0 = CSG.intersect(meshA, meshB)
@@ -104,7 +104,7 @@ const MainScene = () => {
   physics.add.existing(greenSphere)
 
   // green box
-  const geometry = new THREE.BoxBufferGeometry()
+  const geometry = new THREE.BoxGeometry()
   const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 })
   const cube = new ExtendedMesh(geometry, material)
   cube.position.set(0, 5, 0)
@@ -116,10 +116,10 @@ const MainScene = () => {
   const exclamationMark = () => {
     const material = new THREE.MeshLambertMaterial({ color: 0xffff00 })
 
-    const sphere = new THREE.Mesh(new THREE.SphereBufferGeometry(0.25), material)
+    const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.25), material)
     sphere.position.set(0, -0.8, 0)
 
-    const cube = new THREE.Mesh(new THREE.BoxBufferGeometry(0.4, 0.8, 0.4), material)
+    const cube = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.8, 0.4), material)
     cube.position.set(5, 2, 5)
 
     cube.add(sphere)
